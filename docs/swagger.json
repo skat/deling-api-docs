@@ -1,0 +1,15 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Basic Swagger Combine Example",
+      "version": "1.0.0"
+    },
+    "apis": [
+      {
+        "url": "http://localhost:5000/swagger/v1/swagger.json"
+      },
+      {
+        "url": "http://petstore.swagger.io/v2/swagger.json"
+      }
+    ]
+  }

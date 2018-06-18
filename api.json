@@ -1,0 +1,222 @@
+{
+    "x-generator": "NSwag v11.17.12.0 (NJsonSchema v9.10.50.0 (Newtonsoft.Json v11.0.0.0))",
+    "swagger": "2.0",
+    "info": {
+    "title": "DELING API",
+    "contact": {
+    "name": "Innovation og IT-udvikling - UFST",
+    "email": "deleokonomi@skat.dk"
+    },
+    "version": "1.0.0"
+    },
+    "host": "localhost:5000",
+    "schemes": [
+    "http"
+    ],
+    "consumes": [
+    "application/json"
+    ],
+    "produces": [
+    "application/json"
+    ],
+    "paths": {
+    "/api/Car": {
+    "get": {
+    "tags": [
+    "Car"
+    ],
+    "summary": "Get all car filings",
+    "operationId": "Car_GetAll",
+    "responses": {
+    "200": {
+    "x-nullable": true,
+    "description": "",
+    "schema": {
+    "type": "array",
+    "items": {
+    "$ref": "#/definitions/CarFiling"
+    }
+    }
+    }
+    },
+    "security": [
+    {
+    "accessToken": []
+    }
+    ]
+    },
+    "post": {
+    "tags": [
+    "Car"
+    ],
+    "summary": "Add a new car filing",
+    "operationId": "Car_Post",
+    "parameters": [
+    {
+    "name": "item",
+    "in": "body",
+    "required": true,
+    "schema": {
+    "$ref": "#/definitions/CarFiling"
+    },
+    "description": "Car item that needs to be added",
+    "x-nullable": true
+    }
+    ],
+    "responses": {
+    "200": {
+    "x-nullable": true,
+    "description": "",
+    "schema": {
+    "type": "file"
+    }
+    }
+    },
+    "security": [
+    {
+    "accessToken": []
+    }
+    ]
+    }
+    },
+    "/api/Car/user/{userId}": {
+    "get": {
+    "tags": [
+    "Car"
+    ],
+    "summary": "Get car filings by User ID",
+    "operationId": "Car_GetUserFilings",
+    "parameters": [
+    {
+    "type": "string",
+    "name": "userId",
+    "in": "path",
+    "required": true,
+    "description": "ID of user",
+    "x-nullable": false
+    }
+    ],
+    "responses": {
+    "200": {
+    "x-nullable": true,
+    "description": "Returns a list of car filings by User ID",
+    "schema": {
+    "type": "array",
+    "items": {
+    "$ref": "#/definitions/CarFiling"
+    }
+    }
+    }
+    },
+    "security": [
+    {
+    "accessToken": []
+    }
+    ]
+    }
+    },
+    "/api/Car/{id}": {
+    "get": {
+    "tags": [
+    "Car"
+    ],
+    "summary": "Get car filing by ID",
+    "operationId": "Car_Get",
+    "parameters": [
+    {
+    "type": "string",
+    "name": "id",
+    "in": "path",
+    "required": true,
+    "description": "ID of car filing to return",
+    "x-nullable": false
+    }
+    ],
+    "responses": {
+    "200": {
+    "x-nullable": true,
+    "description": "",
+    "schema": {
+    "$ref": "#/definitions/CarFiling"
+    }
+    }
+    },
+    "security": [
+    {
+    "accessToken": []
+    }
+    ]
+    }
+    }
+    },
+    "definitions": {
+    "CarFiling": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+    "registrationNumber"
+    ],
+    "properties": {
+    "registrationNumber": {
+    "type": "string",
+    "description": "The registration number of the car\n            "
+    }
+    },
+    "allOf": [
+    {
+    "$ref": "#/definitions/Filing"
+    }
+    ]
+    },
+    "Filing": {
+    "type": "object",
+    "x-abstract": true,
+    "additionalProperties": false,
+    "required": [
+    "userId",
+    "platformId",
+    "transactionId",
+    "amount",
+    "startTime",
+    "endTime",
+    "paymentTime"
+    ],
+    "properties": {
+    "userId": {
+    "type": "string"
+    },
+    "platformId": {
+    "type": "string"
+    },
+    "transactionId": {
+    "type": "string"
+    },
+    "amount": {
+    "type": "number",
+    "format": "decimal",
+    "minimum": 0.01
+    },
+    "startTime": {
+    "type": "string",
+    "format": "date-time"
+    },
+    "endTime": {
+    "type": "string",
+    "format": "date-time"
+    },
+    "paymentTime": {
+    "type": "string",
+    "format": "date-time"
+    }
+    }
+    }
+    },
+    "securityDefinitions": {
+    "access_token": {
+    "type": "apiKey",
+    "description": "Copy 'Bearer ' + valid acccess token into field",
+    "name": "Authorization",
+    "in": "header"
+    }
+    }
+    }

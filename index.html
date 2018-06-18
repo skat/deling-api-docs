@@ -1,0 +1,4110 @@
+
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Basic Swagger Combine Example</title>
+
+    <style>
+    </style>
+    <link rel="stylesheet" media="screen" href="pub/css/screen.css">
+    <link rel="stylesheet" media="print" href="pub/css/print.css">
+    <link rel="stylesheet" media="screen" href="pub/css/darkula.css">
+    
+      <script src="source/javascripts/lib/_jquery.js"></script>
+<script src="source/javascripts/lib/_jquery.highlight.js"></script>
+<script src="source/javascripts/lib/_lunr.js"></script>
+<script src="source/javascripts/lib/_imagesloaded.min.js"></script>
+<script src="source/javascripts/lib/_energize.js"></script>
+<script src="source/javascripts/app/_lang.js"></script>
+<script src="source/javascripts/app/_search.js"></script>
+<script src="source/javascripts/app/_toc.js"></script>
+<script type="text/javascript">
+$(function() {
+  loadToc($('#toc'), '.toc-link', '.toc-list-h2, .toc-list-h3, .toc-list-h4, .toc-list-h5, .toc-list-h6', 10);
+  setupLanguages($('body').data('languages'));
+  $('.content').imagesLoaded( function() {
+    recacheHeights();
+    refreshToc();
+  });
+});
+
+window.onpopstate = function() {
+  activateLanguage(getLanguageFromQueryString());
+};
+</script>
+
+    
+    <meta name="theme-color" content="#F3F7F9" />
+
+  </head>
+
+  <body data-languages="[&quot;shell&quot;,&quot;http&quot;,&quot;javascript&quot;,&quot;javascript--nodejs&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;java&quot;,&quot;go&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="source/images/navbar.png" class="undefined" alt="Navigation">
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="source/images/logo.png" class="logo" alt="Logo">
+      
+        <div class="lang-selector">
+          
+            
+              <a href="#" data-language-name="shell">Shell</a>
+            
+          
+            
+              <a href="#" data-language-name="http">HTTP</a>
+            
+          
+            
+              <a href="#" data-language-name="javascript">JavaScript</a>
+            
+          
+            
+              <a href="#" data-language-name="javascript--nodejs">Node.JS</a>
+            
+          
+            
+              <a href="#" data-language-name="ruby">Ruby</a>
+            
+          
+            
+              <a href="#" data-language-name="python">Python</a>
+            
+          
+            
+              <a href="#" data-language-name="java">Java</a>
+            
+          
+            
+              <a href="#" data-language-name="go">Go</a>
+            
+          
+        </div>
+      
+      
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      
+      <div id="toc" class="toc-list-h1">
+	  	<ul class="toc-list-h1">
+        
+          <li>
+            <a href="#Basic-Swagger-Combine-Example" class="toc-h1 toc-link" data-title="Basic Swagger Combine Example v1.0.0">Basic Swagger Combine Example v1.0.0</a>
+            
+          </li>
+        
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+            
+          </li>
+        
+          <li>
+            <a href="#Basic-Swagger-Combine-Example-Car" class="toc-h1 toc-link" data-title="Car">Car</a>
+            
+              <ul class="toc-list-h2">
+                
+                  <li>
+                    <a href="#car_getall" class="toc-h2 toc-link" data-title="Car_GetAll">Car_GetAll</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#car_post" class="toc-h2 toc-link" data-title="Car_Post">Car_Post</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#car_getuserfilings" class="toc-h2 toc-link" data-title="Car_GetUserFilings">Car_GetUserFilings</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#car_get" class="toc-h2 toc-link" data-title="Car_Get">Car_Get</a>
+                    
+                  </li>
+                
+              </ul>
+            
+          </li>
+        
+          <li>
+            <a href="#Basic-Swagger-Combine-Example-pet" class="toc-h1 toc-link" data-title="pet">pet</a>
+            
+              <ul class="toc-list-h2">
+                
+                  <li>
+                    <a href="#addpet" class="toc-h2 toc-link" data-title="addPet">addPet</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#updatepet" class="toc-h2 toc-link" data-title="updatePet">updatePet</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#findpetsbystatus" class="toc-h2 toc-link" data-title="findPetsByStatus">findPetsByStatus</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#findpetsbytags" class="toc-h2 toc-link" data-title="findPetsByTags">findPetsByTags</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#getpetbyid" class="toc-h2 toc-link" data-title="getPetById">getPetById</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#updatepetwithform" class="toc-h2 toc-link" data-title="updatePetWithForm">updatePetWithForm</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#deletepet" class="toc-h2 toc-link" data-title="deletePet">deletePet</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#uploadfile" class="toc-h2 toc-link" data-title="uploadFile">uploadFile</a>
+                    
+                  </li>
+                
+              </ul>
+            
+          </li>
+        
+          <li>
+            <a href="#Basic-Swagger-Combine-Example-store" class="toc-h1 toc-link" data-title="store">store</a>
+            
+              <ul class="toc-list-h2">
+                
+                  <li>
+                    <a href="#getinventory" class="toc-h2 toc-link" data-title="getInventory">getInventory</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#placeorder" class="toc-h2 toc-link" data-title="placeOrder">placeOrder</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#getorderbyid" class="toc-h2 toc-link" data-title="getOrderById">getOrderById</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#deleteorder" class="toc-h2 toc-link" data-title="deleteOrder">deleteOrder</a>
+                    
+                  </li>
+                
+              </ul>
+            
+          </li>
+        
+          <li>
+            <a href="#Basic-Swagger-Combine-Example-user" class="toc-h1 toc-link" data-title="user">user</a>
+            
+              <ul class="toc-list-h2">
+                
+                  <li>
+                    <a href="#createuser" class="toc-h2 toc-link" data-title="createUser">createUser</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#createuserswitharrayinput" class="toc-h2 toc-link" data-title="createUsersWithArrayInput">createUsersWithArrayInput</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#createuserswithlistinput" class="toc-h2 toc-link" data-title="createUsersWithListInput">createUsersWithListInput</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#loginuser" class="toc-h2 toc-link" data-title="loginUser">loginUser</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#logoutuser" class="toc-h2 toc-link" data-title="logoutUser">logoutUser</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#getuserbyname" class="toc-h2 toc-link" data-title="getUserByName">getUserByName</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#updateuser" class="toc-h2 toc-link" data-title="updateUser">updateUser</a>
+                    
+                  </li>
+                
+                  <li>
+                    <a href="#deleteuser" class="toc-h2 toc-link" data-title="deleteUser">deleteUser</a>
+                    
+                  </li>
+                
+              </ul>
+            
+          </li>
+        
+		</ul>
+      </div>
+      
+        <ul class="toc-footer">
+          
+        </ul>
+      
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id="Basic-Swagger-Combine-Example">Basic Swagger Combine Example v1.0.0</h1>
+<blockquote>
+<p>Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.</p>
+</blockquote>
+<p>An API for the pilot sharing economy project DELING. The DELING API is organized around <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a>. Our API has resource-oriented URLs and uses HTTP response codes to indicate API errors. The resources are different domains such as Car, Boat, Housing and Services (cleaning, baby-sitting etc). We support <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">CORS</a>, allowing you to interact securily with our API from a client-side web application. You should never expose your secet API key in any public website's client-side code. <a href="https://www.json.org/">JSON</a> is returned by all API responses, including errors.</p>
+<h1 id="authentication">Authentication</h1>
+<ul>
+<li>API Key (access_token)
+<ul>
+<li>Parameter Name: <strong>Authorization</strong>, in: header. Copy 'Bearer ' + valid acccess token into field</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<p>oAuth2 authentication.</p>
+<ul>
+<li>Flow: implicit</li>
+<li>Authorization URL = <a href="http://petstore.swagger.io/oauth/dialog">http://petstore.swagger.io/oauth/dialog</a></li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Scope</th>
+<th>Scope Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>write:pets</td>
+<td>modify pets in your account</td>
+</tr>
+<tr>
+<td>read:pets</td>
+<td>read your pets</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>API Key (api_key)
+<ul>
+<li>Parameter Name: <strong>api_key</strong>, in: header.</li>
+</ul>
+</li>
+</ul>
+<h1 id="Basic-Swagger-Combine-Example-Car">Car</h1>
+<h2 id="car_getall">Car_GetAll</h2>
+<p><a id="opIdCar_GetAll"></a></p>
+<p><code>GET /api/Car</code></p>
+<p><em>Get all car filings</em></p>
+<blockquote>
+<p>Example responses</p>
+</blockquote>
+<blockquote>
+<p>200 Response</p>
+</blockquote>
+<h3 id="car_getall-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>OK</td>
+<td>Inline</td>
+</tr>
+</tbody>
+</table>
+<h3 id="car_getall-responseschema">Response Schema</h3>
+<p>Status Code <strong>200</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>» registrationNumber</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>The registration number of the car</td>
+</tr>
+</tbody>
+</table>
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+None
+</aside>
+<h2 id="car_post">Car_Post</h2>
+<p><a id="opIdCar_Post"></a></p>
+<p><code>POST /api/Car</code></p>
+<p><em>Add a new car filing</em></p>
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+  <span class="hljs-attr">"additionalProperties"</span>: <span class="hljs-literal">false</span>,
+  <span class="hljs-attr">"required"</span>: [
+    <span class="hljs-string">"registrationNumber"</span>
+  ],
+  <span class="hljs-attr">"properties"</span>: {
+    <span class="hljs-attr">"registrationNumber"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+      <span class="hljs-attr">"description"</span>: <span class="hljs-string">"The registration number of the car\n            "</span>
+    }
+  },
+  <span class="hljs-attr">"allOf"</span>: [
+    {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+      <span class="hljs-attr">"x-abstract"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"additionalProperties"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"required"</span>: [
+        <span class="hljs-string">"userId"</span>,
+        <span class="hljs-string">"platformId"</span>,
+        <span class="hljs-string">"transactionId"</span>,
+        <span class="hljs-string">"amount"</span>,
+        <span class="hljs-string">"startTime"</span>,
+        <span class="hljs-string">"endTime"</span>,
+        <span class="hljs-string">"paymentTime"</span>
+      ],
+      <span class="hljs-attr">"properties"</span>: {
+        <span class="hljs-attr">"userId"</span>: {
+          <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+        },
+        <span class="hljs-attr">"platformId"</span>: {
+          <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+        },
+        <span class="hljs-attr">"transactionId"</span>: {
+          <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+        },
+        <span class="hljs-attr">"amount"</span>: {
+          <span class="hljs-attr">"type"</span>: <span class="hljs-string">"number"</span>,
+          <span class="hljs-attr">"format"</span>: <span class="hljs-string">"decimal"</span>,
+          <span class="hljs-attr">"minimum"</span>: <span class="hljs-number">0.01</span>
+        },
+        <span class="hljs-attr">"startTime"</span>: {
+          <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+          <span class="hljs-attr">"format"</span>: <span class="hljs-string">"date-time"</span>
+        },
+        <span class="hljs-attr">"endTime"</span>: {
+          <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+          <span class="hljs-attr">"format"</span>: <span class="hljs-string">"date-time"</span>
+        },
+        <span class="hljs-attr">"paymentTime"</span>: {
+          <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+          <span class="hljs-attr">"format"</span>: <span class="hljs-string">"date-time"</span>
+        }
+      }
+    }
+  ]
+}
+</code></pre>
+<h3 id="car_post-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td>object</td>
+<td>true</td>
+<td>Car item that needs to be added</td>
+</tr>
+<tr>
+<td>» registrationNumber</td>
+<td>body</td>
+<td>string</td>
+<td>true</td>
+<td>The registration number of the car</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Example responses</p>
+</blockquote>
+<blockquote>
+<p>200 Response</p>
+</blockquote>
+<h3 id="car_post-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>OK</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+None
+</aside>
+<h2 id="car_getuserfilings">Car_GetUserFilings</h2>
+<p><a id="opIdCar_GetUserFilings"></a></p>
+<p><code>GET /api/Car/user/{userId}</code></p>
+<p><em>Get car filings by User ID</em></p>
+<h3 id="car_getuserfilings-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userId</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>ID of user</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Example responses</p>
+</blockquote>
+<blockquote>
+<p>200 Response</p>
+</blockquote>
+<h3 id="car_getuserfilings-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>Returns a list of car filings by User ID</td>
+<td>Inline</td>
+</tr>
+</tbody>
+</table>
+<h3 id="car_getuserfilings-responseschema">Response Schema</h3>
+<p>Status Code <strong>200</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>» registrationNumber</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>The registration number of the car</td>
+</tr>
+</tbody>
+</table>
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+None
+</aside>
+<h2 id="car_get">Car_Get</h2>
+<p><a id="opIdCar_Get"></a></p>
+<p><code>GET /api/Car/{id}</code></p>
+<p><em>Get car filing by ID</em></p>
+<h3 id="car_get-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>ID of car filing to return</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Example responses</p>
+</blockquote>
+<blockquote>
+<p>200 Response</p>
+</blockquote>
+<h3 id="car_get-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>OK</td>
+<td>Inline</td>
+</tr>
+</tbody>
+</table>
+<h3 id="car_get-responseschema">Response Schema</h3>
+<p>Status Code <strong>200</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>» registrationNumber</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>The registration number of the car</td>
+</tr>
+</tbody>
+</table>
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+None
+</aside>
+<h1 id="Basic-Swagger-Combine-Example-pet">pet</h1>
+<h2 id="addpet">addPet</h2>
+<p><a id="opIdaddPet"></a></p>
+<p><code>POST /pet</code></p>
+<p><em>Add a new pet to the store</em></p>
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+  <span class="hljs-attr">"required"</span>: [
+    <span class="hljs-string">"name"</span>,
+    <span class="hljs-string">"photoUrls"</span>
+  ],
+  <span class="hljs-attr">"properties"</span>: {
+    <span class="hljs-attr">"id"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+      <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+    },
+    <span class="hljs-attr">"category"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+      <span class="hljs-attr">"properties"</span>: {
+        <span class="hljs-attr">"id"</span>: {
+          <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+          <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+        },
+        <span class="hljs-attr">"name"</span>: {
+          <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+        }
+      },
+      <span class="hljs-attr">"xml"</span>: {
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Category"</span>
+      }
+    },
+    <span class="hljs-attr">"name"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+      <span class="hljs-attr">"example"</span>: <span class="hljs-string">"doggie"</span>
+    },
+    <span class="hljs-attr">"photoUrls"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"array"</span>,
+      <span class="hljs-attr">"xml"</span>: {
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"photoUrl"</span>,
+        <span class="hljs-attr">"wrapped"</span>: <span class="hljs-literal">true</span>
+      },
+      <span class="hljs-attr">"items"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+      }
+    },
+    <span class="hljs-attr">"tags"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"array"</span>,
+      <span class="hljs-attr">"xml"</span>: {
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"tag"</span>,
+        <span class="hljs-attr">"wrapped"</span>: <span class="hljs-literal">true</span>
+      },
+      <span class="hljs-attr">"items"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+        <span class="hljs-attr">"properties"</span>: {
+          <span class="hljs-attr">"id"</span>: {
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+            <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+          },
+          <span class="hljs-attr">"name"</span>: {
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+          }
+        },
+        <span class="hljs-attr">"xml"</span>: {
+          <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Tag"</span>
+        }
+      }
+    },
+    <span class="hljs-attr">"status"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+      <span class="hljs-attr">"description"</span>: <span class="hljs-string">"pet status in the store"</span>,
+      <span class="hljs-attr">"enum"</span>: [
+        <span class="hljs-string">"available"</span>,
+        <span class="hljs-string">"pending"</span>,
+        <span class="hljs-string">"sold"</span>
+      ]
+    }
+  },
+  <span class="hljs-attr">"xml"</span>: {
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Pet"</span>
+  }
+}
+</code></pre>
+<pre class="highlight tab tab-xml"><code><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span> <span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Pet</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>object<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">required</span>&gt;</span>name<span class="hljs-tag">&lt;/<span class="hljs-name">required</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">required</span>&gt;</span>photoUrls<span class="hljs-tag">&lt;/<span class="hljs-name">required</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>integer<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>int64<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">category</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>object<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>integer<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>int64<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Category<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">category</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">example</span>&gt;</span>doggie<span class="hljs-tag">&lt;/<span class="hljs-name">example</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">photoUrls</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>array<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>photoUrl<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">wrapped</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">wrapped</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">items</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">items</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">photoUrls</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tags</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>array<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>tag<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">wrapped</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">wrapped</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">items</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>object<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>integer<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>int64<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Tag<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">items</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tags</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">status</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">description</span>&gt;</span>pet status in the store<span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">enum</span>&gt;</span>available<span class="hljs-tag">&lt;/<span class="hljs-name">enum</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">enum</span>&gt;</span>pending<span class="hljs-tag">&lt;/<span class="hljs-name">enum</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">enum</span>&gt;</span>sold<span class="hljs-tag">&lt;/<span class="hljs-name">enum</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">status</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Pet<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">Pet</span>&gt;</span>
+</code></pre>
+<h3 id="addpet-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemaaddpetbody">addPetBody</a></td>
+<td>true</td>
+<td>Pet object that needs to be added to the store</td>
+</tr>
+<tr>
+<td>» id</td>
+<td>body</td>
+<td>integer(int64)</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» category</td>
+<td>body</td>
+<td>object</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» id</td>
+<td>body</td>
+<td>integer(int64)</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» name</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» name</td>
+<td>body</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» photoUrls</td>
+<td>body</td>
+<td>[string]</td>
+<td>true</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» tags</td>
+<td>body</td>
+<td>[object]</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» id</td>
+<td>body</td>
+<td>integer(int64)</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» name</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» status</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>pet status in the store</td>
+</tr>
+</tbody>
+</table>
+<h4 id="enumerated-values">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>» status</td>
+<td>available</td>
+</tr>
+<tr>
+<td>» status</td>
+<td>pending</td>
+</tr>
+<tr>
+<td>» status</td>
+<td>sold</td>
+</tr>
+</tbody>
+</table>
+<h3 id="addpet-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>405</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
+<td>Invalid input</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+petstore_auth ( Scopes: write:pets read:pets )
+</aside>
+<h2 id="updatepet">updatePet</h2>
+<p><a id="opIdupdatePet"></a></p>
+<p><code>PUT /pet</code></p>
+<p><em>Update an existing pet</em></p>
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+  <span class="hljs-attr">"required"</span>: [
+    <span class="hljs-string">"name"</span>,
+    <span class="hljs-string">"photoUrls"</span>
+  ],
+  <span class="hljs-attr">"properties"</span>: {
+    <span class="hljs-attr">"id"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+      <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+    },
+    <span class="hljs-attr">"category"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+      <span class="hljs-attr">"properties"</span>: {
+        <span class="hljs-attr">"id"</span>: {
+          <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+          <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+        },
+        <span class="hljs-attr">"name"</span>: {
+          <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+        }
+      },
+      <span class="hljs-attr">"xml"</span>: {
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Category"</span>
+      }
+    },
+    <span class="hljs-attr">"name"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+      <span class="hljs-attr">"example"</span>: <span class="hljs-string">"doggie"</span>
+    },
+    <span class="hljs-attr">"photoUrls"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"array"</span>,
+      <span class="hljs-attr">"xml"</span>: {
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"photoUrl"</span>,
+        <span class="hljs-attr">"wrapped"</span>: <span class="hljs-literal">true</span>
+      },
+      <span class="hljs-attr">"items"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+      }
+    },
+    <span class="hljs-attr">"tags"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"array"</span>,
+      <span class="hljs-attr">"xml"</span>: {
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"tag"</span>,
+        <span class="hljs-attr">"wrapped"</span>: <span class="hljs-literal">true</span>
+      },
+      <span class="hljs-attr">"items"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+        <span class="hljs-attr">"properties"</span>: {
+          <span class="hljs-attr">"id"</span>: {
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+            <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+          },
+          <span class="hljs-attr">"name"</span>: {
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+          }
+        },
+        <span class="hljs-attr">"xml"</span>: {
+          <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Tag"</span>
+        }
+      }
+    },
+    <span class="hljs-attr">"status"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+      <span class="hljs-attr">"description"</span>: <span class="hljs-string">"pet status in the store"</span>,
+      <span class="hljs-attr">"enum"</span>: [
+        <span class="hljs-string">"available"</span>,
+        <span class="hljs-string">"pending"</span>,
+        <span class="hljs-string">"sold"</span>
+      ]
+    }
+  },
+  <span class="hljs-attr">"xml"</span>: {
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Pet"</span>
+  }
+}
+</code></pre>
+<pre class="highlight tab tab-xml"><code><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span> <span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Pet</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>object<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">required</span>&gt;</span>name<span class="hljs-tag">&lt;/<span class="hljs-name">required</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">required</span>&gt;</span>photoUrls<span class="hljs-tag">&lt;/<span class="hljs-name">required</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>integer<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>int64<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">category</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>object<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>integer<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>int64<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Category<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">category</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">example</span>&gt;</span>doggie<span class="hljs-tag">&lt;/<span class="hljs-name">example</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">photoUrls</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>array<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>photoUrl<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">wrapped</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">wrapped</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">items</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">items</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">photoUrls</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tags</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>array<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>tag<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">wrapped</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">wrapped</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">items</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>object<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>integer<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>int64<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Tag<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">items</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tags</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">status</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">description</span>&gt;</span>pet status in the store<span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">enum</span>&gt;</span>available<span class="hljs-tag">&lt;/<span class="hljs-name">enum</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">enum</span>&gt;</span>pending<span class="hljs-tag">&lt;/<span class="hljs-name">enum</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">enum</span>&gt;</span>sold<span class="hljs-tag">&lt;/<span class="hljs-name">enum</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">status</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Pet<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">Pet</span>&gt;</span>
+</code></pre>
+<h3 id="updatepet-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemaaddpetbody">addPetBody</a></td>
+<td>true</td>
+<td>Pet object that needs to be added to the store</td>
+</tr>
+<tr>
+<td>» id</td>
+<td>body</td>
+<td>integer(int64)</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» category</td>
+<td>body</td>
+<td>object</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» id</td>
+<td>body</td>
+<td>integer(int64)</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» name</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» name</td>
+<td>body</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» photoUrls</td>
+<td>body</td>
+<td>[string]</td>
+<td>true</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» tags</td>
+<td>body</td>
+<td>[object]</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» id</td>
+<td>body</td>
+<td>integer(int64)</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» name</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» status</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>pet status in the store</td>
+</tr>
+</tbody>
+</table>
+<h4 id="enumerated-values">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>» status</td>
+<td>available</td>
+</tr>
+<tr>
+<td>» status</td>
+<td>pending</td>
+</tr>
+<tr>
+<td>» status</td>
+<td>sold</td>
+</tr>
+</tbody>
+</table>
+<h3 id="updatepet-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Invalid ID supplied</td>
+<td>None</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>Pet not found</td>
+<td>None</td>
+</tr>
+<tr>
+<td>405</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
+<td>Validation exception</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+petstore_auth ( Scopes: write:pets read:pets )
+</aside>
+<h2 id="findpetsbystatus">findPetsByStatus</h2>
+<p><a id="opIdfindPetsByStatus"></a></p>
+<p><code>GET /pet/findByStatus</code></p>
+<p><em>Finds Pets by status</em></p>
+<p>Multiple status values can be provided with comma separated strings</p>
+<h3 id="findpetsbystatus-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td>query</td>
+<td>array[string]</td>
+<td>true</td>
+<td>Status values that need to be considered for filter</td>
+</tr>
+</tbody>
+</table>
+<h4 id="enumerated-values">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td>available</td>
+</tr>
+<tr>
+<td>status</td>
+<td>pending</td>
+</tr>
+<tr>
+<td>status</td>
+<td>sold</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Example responses</p>
+</blockquote>
+<blockquote>
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight tab tab-xml"><code><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span> <span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>array<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">items</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>object<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">required</span>&gt;</span>name<span class="hljs-tag">&lt;/<span class="hljs-name">required</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">required</span>&gt;</span>photoUrls<span class="hljs-tag">&lt;/<span class="hljs-name">required</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>integer<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>int64<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">category</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>object<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>integer<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>int64<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Category<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">category</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">example</span>&gt;</span>doggie<span class="hljs-tag">&lt;/<span class="hljs-name">example</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">photoUrls</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>array<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>photoUrl<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">wrapped</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">wrapped</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">items</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">items</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">photoUrls</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tags</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>array<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>tag<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">wrapped</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">wrapped</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">items</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>object<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>integer<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>int64<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Tag<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">items</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tags</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">status</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">description</span>&gt;</span>pet status in the store<span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">enum</span>&gt;</span>available<span class="hljs-tag">&lt;/<span class="hljs-name">enum</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">enum</span>&gt;</span>pending<span class="hljs-tag">&lt;/<span class="hljs-name">enum</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">enum</span>&gt;</span>sold<span class="hljs-tag">&lt;/<span class="hljs-name">enum</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">status</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Pet<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">items</span>&gt;</span>
+</code></pre>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"array"</span>,
+  <span class="hljs-attr">"items"</span>: {
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+    <span class="hljs-attr">"required"</span>: [
+      <span class="hljs-string">"name"</span>,
+      <span class="hljs-string">"photoUrls"</span>
+    ],
+    <span class="hljs-attr">"properties"</span>: {
+      <span class="hljs-attr">"id"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+        <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+      },
+      <span class="hljs-attr">"category"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+        <span class="hljs-attr">"properties"</span>: {
+          <span class="hljs-attr">"id"</span>: {
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+            <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+          },
+          <span class="hljs-attr">"name"</span>: {
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+          }
+        },
+        <span class="hljs-attr">"xml"</span>: {
+          <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Category"</span>
+        }
+      },
+      <span class="hljs-attr">"name"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+        <span class="hljs-attr">"example"</span>: <span class="hljs-string">"doggie"</span>
+      },
+      <span class="hljs-attr">"photoUrls"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"array"</span>,
+        <span class="hljs-attr">"xml"</span>: {
+          <span class="hljs-attr">"name"</span>: <span class="hljs-string">"photoUrl"</span>,
+          <span class="hljs-attr">"wrapped"</span>: <span class="hljs-literal">true</span>
+        },
+        <span class="hljs-attr">"items"</span>: {
+          <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+        }
+      },
+      <span class="hljs-attr">"tags"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"array"</span>,
+        <span class="hljs-attr">"xml"</span>: {
+          <span class="hljs-attr">"name"</span>: <span class="hljs-string">"tag"</span>,
+          <span class="hljs-attr">"wrapped"</span>: <span class="hljs-literal">true</span>
+        },
+        <span class="hljs-attr">"items"</span>: {
+          <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+          <span class="hljs-attr">"properties"</span>: {
+            <span class="hljs-attr">"id"</span>: {
+              <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+              <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+            },
+            <span class="hljs-attr">"name"</span>: {
+              <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+            }
+          },
+          <span class="hljs-attr">"xml"</span>: {
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Tag"</span>
+          }
+        }
+      },
+      <span class="hljs-attr">"status"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+        <span class="hljs-attr">"description"</span>: <span class="hljs-string">"pet status in the store"</span>,
+        <span class="hljs-attr">"enum"</span>: [
+          <span class="hljs-string">"available"</span>,
+          <span class="hljs-string">"pending"</span>,
+          <span class="hljs-string">"sold"</span>
+        ]
+      }
+    },
+    <span class="hljs-attr">"xml"</span>: {
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Pet"</span>
+    }
+  }
+}
+</code></pre>
+<h3 id="findpetsbystatus-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>successful operation</td>
+<td>Inline</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Invalid status value</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="findpetsbystatus-responseschema">Response Schema</h3>
+<p>Status Code <strong>200</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>» id</td>
+<td>integer(int64)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» category</td>
+<td>object</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» id</td>
+<td>integer(int64)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» name</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» name</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» photoUrls</td>
+<td>[string]</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» tags</td>
+<td>[object]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» id</td>
+<td>integer(int64)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» name</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» status</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>pet status in the store</td>
+</tr>
+</tbody>
+</table>
+<h4 id="enumerated-values">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td>available</td>
+</tr>
+<tr>
+<td>status</td>
+<td>pending</td>
+</tr>
+<tr>
+<td>status</td>
+<td>sold</td>
+</tr>
+</tbody>
+</table>
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+petstore_auth ( Scopes: write:pets read:pets )
+</aside>
+<h2 id="findpetsbytags">findPetsByTags</h2>
+<p><a id="opIdfindPetsByTags"></a></p>
+<p><code>GET /pet/findByTags</code></p>
+<p><em>Finds Pets by tags</em></p>
+<p>Muliple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.</p>
+<h3 id="findpetsbytags-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tags</td>
+<td>query</td>
+<td>array[string]</td>
+<td>true</td>
+<td>Tags to filter by</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Example responses</p>
+</blockquote>
+<blockquote>
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight tab tab-xml"><code><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span> <span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>array<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">items</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>object<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">required</span>&gt;</span>name<span class="hljs-tag">&lt;/<span class="hljs-name">required</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">required</span>&gt;</span>photoUrls<span class="hljs-tag">&lt;/<span class="hljs-name">required</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>integer<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>int64<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">category</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>object<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>integer<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>int64<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Category<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">category</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">example</span>&gt;</span>doggie<span class="hljs-tag">&lt;/<span class="hljs-name">example</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">photoUrls</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>array<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>photoUrl<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">wrapped</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">wrapped</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">items</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">items</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">photoUrls</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tags</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>array<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>tag<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">wrapped</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">wrapped</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">items</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>object<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>integer<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>int64<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Tag<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">items</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tags</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">status</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">description</span>&gt;</span>pet status in the store<span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">enum</span>&gt;</span>available<span class="hljs-tag">&lt;/<span class="hljs-name">enum</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">enum</span>&gt;</span>pending<span class="hljs-tag">&lt;/<span class="hljs-name">enum</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">enum</span>&gt;</span>sold<span class="hljs-tag">&lt;/<span class="hljs-name">enum</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">status</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Pet<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">items</span>&gt;</span>
+</code></pre>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"array"</span>,
+  <span class="hljs-attr">"items"</span>: {
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+    <span class="hljs-attr">"required"</span>: [
+      <span class="hljs-string">"name"</span>,
+      <span class="hljs-string">"photoUrls"</span>
+    ],
+    <span class="hljs-attr">"properties"</span>: {
+      <span class="hljs-attr">"id"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+        <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+      },
+      <span class="hljs-attr">"category"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+        <span class="hljs-attr">"properties"</span>: {
+          <span class="hljs-attr">"id"</span>: {
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+            <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+          },
+          <span class="hljs-attr">"name"</span>: {
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+          }
+        },
+        <span class="hljs-attr">"xml"</span>: {
+          <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Category"</span>
+        }
+      },
+      <span class="hljs-attr">"name"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+        <span class="hljs-attr">"example"</span>: <span class="hljs-string">"doggie"</span>
+      },
+      <span class="hljs-attr">"photoUrls"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"array"</span>,
+        <span class="hljs-attr">"xml"</span>: {
+          <span class="hljs-attr">"name"</span>: <span class="hljs-string">"photoUrl"</span>,
+          <span class="hljs-attr">"wrapped"</span>: <span class="hljs-literal">true</span>
+        },
+        <span class="hljs-attr">"items"</span>: {
+          <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+        }
+      },
+      <span class="hljs-attr">"tags"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"array"</span>,
+        <span class="hljs-attr">"xml"</span>: {
+          <span class="hljs-attr">"name"</span>: <span class="hljs-string">"tag"</span>,
+          <span class="hljs-attr">"wrapped"</span>: <span class="hljs-literal">true</span>
+        },
+        <span class="hljs-attr">"items"</span>: {
+          <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+          <span class="hljs-attr">"properties"</span>: {
+            <span class="hljs-attr">"id"</span>: {
+              <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+              <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+            },
+            <span class="hljs-attr">"name"</span>: {
+              <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+            }
+          },
+          <span class="hljs-attr">"xml"</span>: {
+            <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Tag"</span>
+          }
+        }
+      },
+      <span class="hljs-attr">"status"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+        <span class="hljs-attr">"description"</span>: <span class="hljs-string">"pet status in the store"</span>,
+        <span class="hljs-attr">"enum"</span>: [
+          <span class="hljs-string">"available"</span>,
+          <span class="hljs-string">"pending"</span>,
+          <span class="hljs-string">"sold"</span>
+        ]
+      }
+    },
+    <span class="hljs-attr">"xml"</span>: {
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Pet"</span>
+    }
+  }
+}
+</code></pre>
+<h3 id="findpetsbytags-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>successful operation</td>
+<td>Inline</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Invalid tag value</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="findpetsbytags-responseschema">Response Schema</h3>
+<p>Status Code <strong>200</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>» id</td>
+<td>integer(int64)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» category</td>
+<td>object</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» id</td>
+<td>integer(int64)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» name</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» name</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» photoUrls</td>
+<td>[string]</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» tags</td>
+<td>[object]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» id</td>
+<td>integer(int64)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» name</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» status</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>pet status in the store</td>
+</tr>
+</tbody>
+</table>
+<h4 id="enumerated-values">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td>available</td>
+</tr>
+<tr>
+<td>status</td>
+<td>pending</td>
+</tr>
+<tr>
+<td>status</td>
+<td>sold</td>
+</tr>
+</tbody>
+</table>
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+petstore_auth ( Scopes: write:pets read:pets )
+</aside>
+<h2 id="getpetbyid">getPetById</h2>
+<p><a id="opIdgetPetById"></a></p>
+<p><code>GET /pet/{petId}</code></p>
+<p><em>Find pet by ID</em></p>
+<p>Returns a single pet</p>
+<h3 id="getpetbyid-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>petId</td>
+<td>path</td>
+<td>integer(int64)</td>
+<td>true</td>
+<td>ID of pet to return</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Example responses</p>
+</blockquote>
+<blockquote>
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight tab tab-xml"><code><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span> <span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Pet</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>object<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">required</span>&gt;</span>name<span class="hljs-tag">&lt;/<span class="hljs-name">required</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">required</span>&gt;</span>photoUrls<span class="hljs-tag">&lt;/<span class="hljs-name">required</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>integer<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>int64<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">category</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>object<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>integer<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>int64<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Category<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">category</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">example</span>&gt;</span>doggie<span class="hljs-tag">&lt;/<span class="hljs-name">example</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">photoUrls</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>array<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>photoUrl<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">wrapped</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">wrapped</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">items</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">items</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">photoUrls</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">tags</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>array<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>tag<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">wrapped</span>&gt;</span>true<span class="hljs-tag">&lt;/<span class="hljs-name">wrapped</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">items</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>object<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>integer<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>int64<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Tag<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">items</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">tags</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">status</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">description</span>&gt;</span>pet status in the store<span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">enum</span>&gt;</span>available<span class="hljs-tag">&lt;/<span class="hljs-name">enum</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">enum</span>&gt;</span>pending<span class="hljs-tag">&lt;/<span class="hljs-name">enum</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">enum</span>&gt;</span>sold<span class="hljs-tag">&lt;/<span class="hljs-name">enum</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">status</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Pet<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">Pet</span>&gt;</span>
+</code></pre>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+  <span class="hljs-attr">"required"</span>: [
+    <span class="hljs-string">"name"</span>,
+    <span class="hljs-string">"photoUrls"</span>
+  ],
+  <span class="hljs-attr">"properties"</span>: {
+    <span class="hljs-attr">"id"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+      <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+    },
+    <span class="hljs-attr">"category"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+      <span class="hljs-attr">"properties"</span>: {
+        <span class="hljs-attr">"id"</span>: {
+          <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+          <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+        },
+        <span class="hljs-attr">"name"</span>: {
+          <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+        }
+      },
+      <span class="hljs-attr">"xml"</span>: {
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Category"</span>
+      }
+    },
+    <span class="hljs-attr">"name"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+      <span class="hljs-attr">"example"</span>: <span class="hljs-string">"doggie"</span>
+    },
+    <span class="hljs-attr">"photoUrls"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"array"</span>,
+      <span class="hljs-attr">"xml"</span>: {
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"photoUrl"</span>,
+        <span class="hljs-attr">"wrapped"</span>: <span class="hljs-literal">true</span>
+      },
+      <span class="hljs-attr">"items"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+      }
+    },
+    <span class="hljs-attr">"tags"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"array"</span>,
+      <span class="hljs-attr">"xml"</span>: {
+        <span class="hljs-attr">"name"</span>: <span class="hljs-string">"tag"</span>,
+        <span class="hljs-attr">"wrapped"</span>: <span class="hljs-literal">true</span>
+      },
+      <span class="hljs-attr">"items"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+        <span class="hljs-attr">"properties"</span>: {
+          <span class="hljs-attr">"id"</span>: {
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+            <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+          },
+          <span class="hljs-attr">"name"</span>: {
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+          }
+        },
+        <span class="hljs-attr">"xml"</span>: {
+          <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Tag"</span>
+        }
+      }
+    },
+    <span class="hljs-attr">"status"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+      <span class="hljs-attr">"description"</span>: <span class="hljs-string">"pet status in the store"</span>,
+      <span class="hljs-attr">"enum"</span>: [
+        <span class="hljs-string">"available"</span>,
+        <span class="hljs-string">"pending"</span>,
+        <span class="hljs-string">"sold"</span>
+      ]
+    }
+  },
+  <span class="hljs-attr">"xml"</span>: {
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Pet"</span>
+  }
+}
+</code></pre>
+<h3 id="getpetbyid-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>successful operation</td>
+<td>Inline</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Invalid ID supplied</td>
+<td>None</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>Pet not found</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="getpetbyid-responseschema">Response Schema</h3>
+<p>Status Code <strong>200</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>» id</td>
+<td>integer(int64)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» category</td>
+<td>object</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» id</td>
+<td>integer(int64)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» name</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» name</td>
+<td>string</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» photoUrls</td>
+<td>[string]</td>
+<td>true</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» tags</td>
+<td>[object]</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» id</td>
+<td>integer(int64)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>»» name</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» status</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>pet status in the store</td>
+</tr>
+</tbody>
+</table>
+<h4 id="enumerated-values">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td>available</td>
+</tr>
+<tr>
+<td>status</td>
+<td>pending</td>
+</tr>
+<tr>
+<td>status</td>
+<td>sold</td>
+</tr>
+</tbody>
+</table>
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+api_key
+</aside>
+<h2 id="updatepetwithform">updatePetWithForm</h2>
+<p><a id="opIdupdatePetWithForm"></a></p>
+<p><code>POST /pet/{petId}</code></p>
+<p><em>Updates a pet in the store with form data</em></p>
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<pre class="highlight tab tab-yaml"><code><span class="hljs-attr">type:</span> <span class="hljs-string">object</span>
+<span class="hljs-attr">properties:</span>
+<span class="hljs-attr">  name:</span>
+<span class="hljs-attr">    description:</span> <span class="hljs-string">Updated</span> <span class="hljs-string">name</span> <span class="hljs-string">of</span> <span class="hljs-string">the</span> <span class="hljs-string">pet</span>
+<span class="hljs-attr">    type:</span> <span class="hljs-string">string</span>
+<span class="hljs-attr">  status:</span>
+<span class="hljs-attr">    description:</span> <span class="hljs-string">Updated</span> <span class="hljs-string">status</span> <span class="hljs-string">of</span> <span class="hljs-string">the</span> <span class="hljs-string">pet</span>
+<span class="hljs-attr">    type:</span> <span class="hljs-string">string</span>
+
+</code></pre>
+<h3 id="updatepetwithform-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>petId</td>
+<td>path</td>
+<td>integer(int64)</td>
+<td>true</td>
+<td>ID of pet that needs to be updated</td>
+</tr>
+<tr>
+<td>body</td>
+<td>body</td>
+<td>object</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» name</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>Updated name of the pet</td>
+</tr>
+<tr>
+<td>» status</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>Updated status of the pet</td>
+</tr>
+</tbody>
+</table>
+<h3 id="updatepetwithform-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>405</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
+<td>Invalid input</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+petstore_auth ( Scopes: write:pets read:pets )
+</aside>
+<h2 id="deletepet">deletePet</h2>
+<p><a id="opIddeletePet"></a></p>
+<p><code>DELETE /pet/{petId}</code></p>
+<p><em>Deletes a pet</em></p>
+<h3 id="deletepet-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>api_key</td>
+<td>header</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>petId</td>
+<td>path</td>
+<td>integer(int64)</td>
+<td>true</td>
+<td>Pet id to delete</td>
+</tr>
+</tbody>
+</table>
+<h3 id="deletepet-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Invalid ID supplied</td>
+<td>None</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>Pet not found</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+petstore_auth ( Scopes: write:pets read:pets )
+</aside>
+<h2 id="uploadfile">uploadFile</h2>
+<p><a id="opIduploadFile"></a></p>
+<p><code>POST /pet/{petId}/uploadImage</code></p>
+<p><em>uploads an image</em></p>
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<pre class="highlight tab tab-yaml"><code><span class="hljs-attr">type:</span> <span class="hljs-string">object</span>
+<span class="hljs-attr">properties:</span>
+<span class="hljs-attr">  additionalMetadata:</span>
+<span class="hljs-attr">    description:</span> <span class="hljs-string">Additional</span> <span class="hljs-string">data</span> <span class="hljs-string">to</span> <span class="hljs-string">pass</span> <span class="hljs-string">to</span> <span class="hljs-string">server</span>
+<span class="hljs-attr">    type:</span> <span class="hljs-string">string</span>
+<span class="hljs-attr">  file:</span>
+<span class="hljs-attr">    description:</span> <span class="hljs-string">file</span> <span class="hljs-string">to</span> <span class="hljs-string">upload</span>
+<span class="hljs-attr">    type:</span> <span class="hljs-string">string</span>
+<span class="hljs-attr">    format:</span> <span class="hljs-string">binary</span>
+
+</code></pre>
+<h3 id="uploadfile-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>petId</td>
+<td>path</td>
+<td>integer(int64)</td>
+<td>true</td>
+<td>ID of pet to update</td>
+</tr>
+<tr>
+<td>body</td>
+<td>body</td>
+<td>object</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» additionalMetadata</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>Additional data to pass to server</td>
+</tr>
+<tr>
+<td>» file</td>
+<td>body</td>
+<td>string(binary)</td>
+<td>false</td>
+<td>file to upload</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Example responses</p>
+</blockquote>
+<blockquote>
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+  <span class="hljs-attr">"properties"</span>: {
+    <span class="hljs-attr">"code"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+      <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int32"</span>
+    },
+    <span class="hljs-attr">"type"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+    },
+    <span class="hljs-attr">"message"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+    }
+  }
+}
+</code></pre>
+<h3 id="uploadfile-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>successful operation</td>
+<td>Inline</td>
+</tr>
+</tbody>
+</table>
+<h3 id="uploadfile-responseschema">Response Schema</h3>
+<p>Status Code <strong>200</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>» code</td>
+<td>integer(int32)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» type</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» message</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+petstore_auth ( Scopes: write:pets read:pets )
+</aside>
+<h1 id="Basic-Swagger-Combine-Example-store">store</h1>
+<h2 id="getinventory">getInventory</h2>
+<p><a id="opIdgetInventory"></a></p>
+<p><code>GET /store/inventory</code></p>
+<p><em>Returns pet inventories by status</em></p>
+<p>Returns a map of status codes to quantities</p>
+<blockquote>
+<p>Example responses</p>
+</blockquote>
+<blockquote>
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+  <span class="hljs-attr">"additionalProperties"</span>: {
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+    <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int32"</span>
+  }
+}
+</code></pre>
+<h3 id="getinventory-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>successful operation</td>
+<td>Inline</td>
+</tr>
+</tbody>
+</table>
+<h3 id="getinventory-responseschema">Response Schema</h3>
+<p>Status Code <strong>200</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>» <strong>additionalProperties</strong></td>
+<td>integer(int32)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+api_key
+</aside>
+<h2 id="placeorder">placeOrder</h2>
+<p><a id="opIdplaceOrder"></a></p>
+<p><code>POST /store/order</code></p>
+<p><em>Place an order for a pet</em></p>
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+  <span class="hljs-attr">"properties"</span>: {
+    <span class="hljs-attr">"id"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+      <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+    },
+    <span class="hljs-attr">"petId"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+      <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+    },
+    <span class="hljs-attr">"quantity"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+      <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int32"</span>
+    },
+    <span class="hljs-attr">"shipDate"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+      <span class="hljs-attr">"format"</span>: <span class="hljs-string">"date-time"</span>
+    },
+    <span class="hljs-attr">"status"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+      <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Order Status"</span>,
+      <span class="hljs-attr">"enum"</span>: [
+        <span class="hljs-string">"placed"</span>,
+        <span class="hljs-string">"approved"</span>,
+        <span class="hljs-string">"delivered"</span>
+      ]
+    },
+    <span class="hljs-attr">"complete"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"boolean"</span>,
+      <span class="hljs-attr">"default"</span>: <span class="hljs-literal">false</span>
+    }
+  },
+  <span class="hljs-attr">"xml"</span>: {
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Order"</span>
+  }
+}
+</code></pre>
+<h3 id="placeorder-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td>object</td>
+<td>true</td>
+<td>order placed for purchasing the pet</td>
+</tr>
+<tr>
+<td>» id</td>
+<td>body</td>
+<td>integer(int64)</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» petId</td>
+<td>body</td>
+<td>integer(int64)</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» quantity</td>
+<td>body</td>
+<td>integer(int32)</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» shipDate</td>
+<td>body</td>
+<td>string(date-time)</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» status</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>Order Status</td>
+</tr>
+<tr>
+<td>» complete</td>
+<td>body</td>
+<td>boolean</td>
+<td>false</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h4 id="enumerated-values">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>» status</td>
+<td>placed</td>
+</tr>
+<tr>
+<td>» status</td>
+<td>approved</td>
+</tr>
+<tr>
+<td>» status</td>
+<td>delivered</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Example responses</p>
+</blockquote>
+<blockquote>
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight tab tab-xml"><code><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span> <span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Order</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>object<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>integer<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>int64<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">petId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>integer<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>int64<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">petId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">quantity</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>integer<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>int32<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">quantity</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">shipDate</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>date-time<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">shipDate</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">status</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">description</span>&gt;</span>Order Status<span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">enum</span>&gt;</span>placed<span class="hljs-tag">&lt;/<span class="hljs-name">enum</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">enum</span>&gt;</span>approved<span class="hljs-tag">&lt;/<span class="hljs-name">enum</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">enum</span>&gt;</span>delivered<span class="hljs-tag">&lt;/<span class="hljs-name">enum</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">status</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">complete</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>boolean<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">default</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">default</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">complete</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Order<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">Order</span>&gt;</span>
+</code></pre>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+  <span class="hljs-attr">"properties"</span>: {
+    <span class="hljs-attr">"id"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+      <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+    },
+    <span class="hljs-attr">"petId"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+      <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+    },
+    <span class="hljs-attr">"quantity"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+      <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int32"</span>
+    },
+    <span class="hljs-attr">"shipDate"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+      <span class="hljs-attr">"format"</span>: <span class="hljs-string">"date-time"</span>
+    },
+    <span class="hljs-attr">"status"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+      <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Order Status"</span>,
+      <span class="hljs-attr">"enum"</span>: [
+        <span class="hljs-string">"placed"</span>,
+        <span class="hljs-string">"approved"</span>,
+        <span class="hljs-string">"delivered"</span>
+      ]
+    },
+    <span class="hljs-attr">"complete"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"boolean"</span>,
+      <span class="hljs-attr">"default"</span>: <span class="hljs-literal">false</span>
+    }
+  },
+  <span class="hljs-attr">"xml"</span>: {
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Order"</span>
+  }
+}
+</code></pre>
+<h3 id="placeorder-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>successful operation</td>
+<td>Inline</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Invalid Order</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="placeorder-responseschema">Response Schema</h3>
+<p>Status Code <strong>200</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>» id</td>
+<td>integer(int64)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» petId</td>
+<td>integer(int64)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» quantity</td>
+<td>integer(int32)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» shipDate</td>
+<td>string(date-time)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» status</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Order Status</td>
+</tr>
+<tr>
+<td>» complete</td>
+<td>boolean</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h4 id="enumerated-values">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td>placed</td>
+</tr>
+<tr>
+<td>status</td>
+<td>approved</td>
+</tr>
+<tr>
+<td>status</td>
+<td>delivered</td>
+</tr>
+</tbody>
+</table>
+<aside class="success">
+This operation does not require authentication
+</aside>
+<h2 id="getorderbyid">getOrderById</h2>
+<p><a id="opIdgetOrderById"></a></p>
+<p><code>GET /store/order/{orderId}</code></p>
+<p><em>Find purchase order by ID</em></p>
+<p>For valid response try integer IDs with value &gt;= 1 and &lt;= 10. Other values will generated exceptions</p>
+<h3 id="getorderbyid-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>orderId</td>
+<td>path</td>
+<td>integer(int64)</td>
+<td>true</td>
+<td>ID of pet that needs to be fetched</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Example responses</p>
+</blockquote>
+<blockquote>
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight tab tab-xml"><code><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span> <span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Order</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>object<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>integer<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>int64<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">petId</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>integer<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>int64<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">petId</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">quantity</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>integer<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>int32<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">quantity</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">shipDate</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>date-time<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">shipDate</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">status</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">description</span>&gt;</span>Order Status<span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">enum</span>&gt;</span>placed<span class="hljs-tag">&lt;/<span class="hljs-name">enum</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">enum</span>&gt;</span>approved<span class="hljs-tag">&lt;/<span class="hljs-name">enum</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">enum</span>&gt;</span>delivered<span class="hljs-tag">&lt;/<span class="hljs-name">enum</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">status</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">complete</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>boolean<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">default</span>&gt;</span>false<span class="hljs-tag">&lt;/<span class="hljs-name">default</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">complete</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>Order<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">Order</span>&gt;</span>
+</code></pre>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+  <span class="hljs-attr">"properties"</span>: {
+    <span class="hljs-attr">"id"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+      <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+    },
+    <span class="hljs-attr">"petId"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+      <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+    },
+    <span class="hljs-attr">"quantity"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+      <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int32"</span>
+    },
+    <span class="hljs-attr">"shipDate"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+      <span class="hljs-attr">"format"</span>: <span class="hljs-string">"date-time"</span>
+    },
+    <span class="hljs-attr">"status"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>,
+      <span class="hljs-attr">"description"</span>: <span class="hljs-string">"Order Status"</span>,
+      <span class="hljs-attr">"enum"</span>: [
+        <span class="hljs-string">"placed"</span>,
+        <span class="hljs-string">"approved"</span>,
+        <span class="hljs-string">"delivered"</span>
+      ]
+    },
+    <span class="hljs-attr">"complete"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"boolean"</span>,
+      <span class="hljs-attr">"default"</span>: <span class="hljs-literal">false</span>
+    }
+  },
+  <span class="hljs-attr">"xml"</span>: {
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"Order"</span>
+  }
+}
+</code></pre>
+<h3 id="getorderbyid-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>successful operation</td>
+<td>Inline</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Invalid ID supplied</td>
+<td>None</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>Order not found</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="getorderbyid-responseschema">Response Schema</h3>
+<p>Status Code <strong>200</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>» id</td>
+<td>integer(int64)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» petId</td>
+<td>integer(int64)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» quantity</td>
+<td>integer(int32)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» shipDate</td>
+<td>string(date-time)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» status</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>Order Status</td>
+</tr>
+<tr>
+<td>» complete</td>
+<td>boolean</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+</tbody>
+</table>
+<h4 id="enumerated-values">Enumerated Values</h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>status</td>
+<td>placed</td>
+</tr>
+<tr>
+<td>status</td>
+<td>approved</td>
+</tr>
+<tr>
+<td>status</td>
+<td>delivered</td>
+</tr>
+</tbody>
+</table>
+<aside class="success">
+This operation does not require authentication
+</aside>
+<h2 id="deleteorder">deleteOrder</h2>
+<p><a id="opIddeleteOrder"></a></p>
+<p><code>DELETE /store/order/{orderId}</code></p>
+<p><em>Delete purchase order by ID</em></p>
+<p>For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors</p>
+<h3 id="deleteorder-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>orderId</td>
+<td>path</td>
+<td>integer(int64)</td>
+<td>true</td>
+<td>ID of the order that needs to be deleted</td>
+</tr>
+</tbody>
+</table>
+<h3 id="deleteorder-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Invalid ID supplied</td>
+<td>None</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>Order not found</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<aside class="success">
+This operation does not require authentication
+</aside>
+<h1 id="Basic-Swagger-Combine-Example-user">user</h1>
+<h2 id="createuser">createUser</h2>
+<p><a id="opIdcreateUser"></a></p>
+<p><code>POST /user</code></p>
+<p><em>Create user</em></p>
+<p>This can only be done by the logged in user.</p>
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+  <span class="hljs-attr">"properties"</span>: {
+    <span class="hljs-attr">"id"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+      <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+    },
+    <span class="hljs-attr">"username"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+    },
+    <span class="hljs-attr">"firstName"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+    },
+    <span class="hljs-attr">"lastName"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+    },
+    <span class="hljs-attr">"email"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+    },
+    <span class="hljs-attr">"password"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+    },
+    <span class="hljs-attr">"phone"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+    },
+    <span class="hljs-attr">"userStatus"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+      <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int32"</span>,
+      <span class="hljs-attr">"description"</span>: <span class="hljs-string">"User Status"</span>
+    }
+  },
+  <span class="hljs-attr">"xml"</span>: {
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"User"</span>
+  }
+}
+</code></pre>
+<h3 id="createuser-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td>object</td>
+<td>true</td>
+<td>Created user object</td>
+</tr>
+<tr>
+<td>» id</td>
+<td>body</td>
+<td>integer(int64)</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» username</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» firstName</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» lastName</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» email</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» password</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» phone</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» userStatus</td>
+<td>body</td>
+<td>integer(int32)</td>
+<td>false</td>
+<td>User Status</td>
+</tr>
+</tbody>
+</table>
+<h3 id="createuser-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>Default</td>
+<td>successful operation</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<aside class="success">
+This operation does not require authentication
+</aside>
+<h2 id="createuserswitharrayinput">createUsersWithArrayInput</h2>
+<p><a id="opIdcreateUsersWithArrayInput"></a></p>
+<p><code>POST /user/createWithArray</code></p>
+<p><em>Creates list of users with given input array</em></p>
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"array"</span>,
+  <span class="hljs-attr">"items"</span>: {
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+    <span class="hljs-attr">"properties"</span>: {
+      <span class="hljs-attr">"id"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+        <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+      },
+      <span class="hljs-attr">"username"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+      },
+      <span class="hljs-attr">"firstName"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+      },
+      <span class="hljs-attr">"lastName"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+      },
+      <span class="hljs-attr">"email"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+      },
+      <span class="hljs-attr">"password"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+      },
+      <span class="hljs-attr">"phone"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+      },
+      <span class="hljs-attr">"userStatus"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+        <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int32"</span>,
+        <span class="hljs-attr">"description"</span>: <span class="hljs-string">"User Status"</span>
+      }
+    },
+    <span class="hljs-attr">"xml"</span>: {
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"User"</span>
+    }
+  }
+}
+</code></pre>
+<h3 id="createuserswitharrayinput-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemacreateuserswitharrayinputbody">createUsersWithArrayInputBody</a></td>
+<td>true</td>
+<td>List of user object</td>
+</tr>
+</tbody>
+</table>
+<h3 id="createuserswitharrayinput-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>Default</td>
+<td>successful operation</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<aside class="success">
+This operation does not require authentication
+</aside>
+<h2 id="createuserswithlistinput">createUsersWithListInput</h2>
+<p><a id="opIdcreateUsersWithListInput"></a></p>
+<p><code>POST /user/createWithList</code></p>
+<p><em>Creates list of users with given input array</em></p>
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"array"</span>,
+  <span class="hljs-attr">"items"</span>: {
+    <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+    <span class="hljs-attr">"properties"</span>: {
+      <span class="hljs-attr">"id"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+        <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+      },
+      <span class="hljs-attr">"username"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+      },
+      <span class="hljs-attr">"firstName"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+      },
+      <span class="hljs-attr">"lastName"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+      },
+      <span class="hljs-attr">"email"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+      },
+      <span class="hljs-attr">"password"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+      },
+      <span class="hljs-attr">"phone"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+      },
+      <span class="hljs-attr">"userStatus"</span>: {
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+        <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int32"</span>,
+        <span class="hljs-attr">"description"</span>: <span class="hljs-string">"User Status"</span>
+      }
+    },
+    <span class="hljs-attr">"xml"</span>: {
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"User"</span>
+    }
+  }
+}
+</code></pre>
+<h3 id="createuserswithlistinput-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>body</td>
+<td>body</td>
+<td><a href="#schemacreateuserswitharrayinputbody">createUsersWithArrayInputBody</a></td>
+<td>true</td>
+<td>List of user object</td>
+</tr>
+</tbody>
+</table>
+<h3 id="createuserswithlistinput-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>Default</td>
+<td>successful operation</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<aside class="success">
+This operation does not require authentication
+</aside>
+<h2 id="loginuser">loginUser</h2>
+<p><a id="opIdloginUser"></a></p>
+<p><code>GET /user/login</code></p>
+<p><em>Logs user into the system</em></p>
+<h3 id="loginuser-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>username</td>
+<td>query</td>
+<td>string</td>
+<td>true</td>
+<td>The user name for login</td>
+</tr>
+<tr>
+<td>password</td>
+<td>query</td>
+<td>string</td>
+<td>true</td>
+<td>The password for login in clear text</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Example responses</p>
+</blockquote>
+<blockquote>
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight tab tab-xml"><code><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span> <span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+</code></pre>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+}
+</code></pre>
+<h3 id="loginuser-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>successful operation</td>
+<td>string</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Invalid username/password supplied</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="response-headers">Response Headers</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Header</th>
+<th>Type</th>
+<th>Format</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td>X-Rate-Limit</td>
+<td>integer</td>
+<td>int32</td>
+<td>calls per hour allowed by the user</td>
+</tr>
+<tr>
+<td>200</td>
+<td>X-Expires-After</td>
+<td>string</td>
+<td>date-time</td>
+<td>date in UTC when token expires</td>
+</tr>
+</tbody>
+</table>
+<aside class="success">
+This operation does not require authentication
+</aside>
+<h2 id="logoutuser">logoutUser</h2>
+<p><a id="opIdlogoutUser"></a></p>
+<p><code>GET /user/logout</code></p>
+<p><em>Logs out current logged in user session</em></p>
+<h3 id="logoutuser-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>Default</td>
+<td>successful operation</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<aside class="success">
+This operation does not require authentication
+</aside>
+<h2 id="getuserbyname">getUserByName</h2>
+<p><a id="opIdgetUserByName"></a></p>
+<p><code>GET /user/{username}</code></p>
+<p><em>Get user by user name</em></p>
+<h3 id="getuserbyname-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>username</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>The name that needs to be fetched. Use user1 for testing.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Example responses</p>
+</blockquote>
+<blockquote>
+<p>200 Response</p>
+</blockquote>
+<pre class="highlight tab tab-xml"><code><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span> <span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">User</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>object<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">properties</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>integer<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>int64<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">username</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">username</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">firstName</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">firstName</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">lastName</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">lastName</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">email</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">email</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">password</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">password</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">phone</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>string<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">phone</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">userStatus</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">type</span>&gt;</span>integer<span class="hljs-tag">&lt;/<span class="hljs-name">type</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">format</span>&gt;</span>int32<span class="hljs-tag">&lt;/<span class="hljs-name">format</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">description</span>&gt;</span>User Status<span class="hljs-tag">&lt;/<span class="hljs-name">description</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">userStatus</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">properties</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">xml</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>User<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">xml</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">User</span>&gt;</span>
+</code></pre>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+  <span class="hljs-attr">"properties"</span>: {
+    <span class="hljs-attr">"id"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+      <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+    },
+    <span class="hljs-attr">"username"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+    },
+    <span class="hljs-attr">"firstName"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+    },
+    <span class="hljs-attr">"lastName"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+    },
+    <span class="hljs-attr">"email"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+    },
+    <span class="hljs-attr">"password"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+    },
+    <span class="hljs-attr">"phone"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+    },
+    <span class="hljs-attr">"userStatus"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+      <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int32"</span>,
+      <span class="hljs-attr">"description"</span>: <span class="hljs-string">"User Status"</span>
+    }
+  },
+  <span class="hljs-attr">"xml"</span>: {
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"User"</span>
+  }
+}
+</code></pre>
+<h3 id="getuserbyname-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>200</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
+<td>successful operation</td>
+<td>Inline</td>
+</tr>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Invalid username supplied</td>
+<td>None</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>User not found</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<h3 id="getuserbyname-responseschema">Response Schema</h3>
+<p>Status Code <strong>200</strong></p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Required</th>
+<th>Restrictions</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>» id</td>
+<td>integer(int64)</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» username</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» firstName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» lastName</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» email</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» password</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» phone</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» userStatus</td>
+<td>integer(int32)</td>
+<td>false</td>
+<td>none</td>
+<td>User Status</td>
+</tr>
+</tbody>
+</table>
+<aside class="success">
+This operation does not require authentication
+</aside>
+<h2 id="updateuser">updateUser</h2>
+<p><a id="opIdupdateUser"></a></p>
+<p><code>PUT /user/{username}</code></p>
+<p><em>Updated user</em></p>
+<p>This can only be done by the logged in user.</p>
+<blockquote>
+<p>Body parameter</p>
+</blockquote>
+<pre class="highlight tab tab-json"><code>{
+  <span class="hljs-attr">"type"</span>: <span class="hljs-string">"object"</span>,
+  <span class="hljs-attr">"properties"</span>: {
+    <span class="hljs-attr">"id"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+      <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int64"</span>
+    },
+    <span class="hljs-attr">"username"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+    },
+    <span class="hljs-attr">"firstName"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+    },
+    <span class="hljs-attr">"lastName"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+    },
+    <span class="hljs-attr">"email"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+    },
+    <span class="hljs-attr">"password"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+    },
+    <span class="hljs-attr">"phone"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"string"</span>
+    },
+    <span class="hljs-attr">"userStatus"</span>: {
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"integer"</span>,
+      <span class="hljs-attr">"format"</span>: <span class="hljs-string">"int32"</span>,
+      <span class="hljs-attr">"description"</span>: <span class="hljs-string">"User Status"</span>
+    }
+  },
+  <span class="hljs-attr">"xml"</span>: {
+    <span class="hljs-attr">"name"</span>: <span class="hljs-string">"User"</span>
+  }
+}
+</code></pre>
+<h3 id="updateuser-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>username</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>name that need to be updated</td>
+</tr>
+<tr>
+<td>body</td>
+<td>body</td>
+<td>object</td>
+<td>true</td>
+<td>Updated user object</td>
+</tr>
+<tr>
+<td>» id</td>
+<td>body</td>
+<td>integer(int64)</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» username</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» firstName</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» lastName</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» email</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» password</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» phone</td>
+<td>body</td>
+<td>string</td>
+<td>false</td>
+<td>none</td>
+</tr>
+<tr>
+<td>» userStatus</td>
+<td>body</td>
+<td>integer(int32)</td>
+<td>false</td>
+<td>User Status</td>
+</tr>
+</tbody>
+</table>
+<h3 id="updateuser-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Invalid user supplied</td>
+<td>None</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>User not found</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<aside class="success">
+This operation does not require authentication
+</aside>
+<h2 id="deleteuser">deleteUser</h2>
+<p><a id="opIddeleteUser"></a></p>
+<p><code>DELETE /user/{username}</code></p>
+<p><em>Delete user</em></p>
+<p>This can only be done by the logged in user.</p>
+<h3 id="deleteuser-parameters">Parameters</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>username</td>
+<td>path</td>
+<td>string</td>
+<td>true</td>
+<td>The name that needs to be deleted</td>
+</tr>
+</tbody>
+</table>
+<h3 id="deleteuser-responses">Responses</h3>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+<th>Description</th>
+<th>Schema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>400</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.1">Bad Request</a></td>
+<td>Invalid username supplied</td>
+<td>None</td>
+</tr>
+<tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>User not found</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+      </div>
+      <div class="dark-box">
+        
+          <div class="lang-selector">
+            
+              
+                <a href="#" data-language-name="shell">Shell</a>
+              
+            
+              
+                <a href="#" data-language-name="http">HTTP</a>
+              
+            
+              
+                <a href="#" data-language-name="javascript">JavaScript</a>
+              
+            
+              
+                <a href="#" data-language-name="javascript--nodejs">Node.JS</a>
+              
+            
+              
+                <a href="#" data-language-name="ruby">Ruby</a>
+              
+            
+              
+                <a href="#" data-language-name="python">Python</a>
+              
+            
+              
+                <a href="#" data-language-name="java">Java</a>
+              
+            
+              
+                <a href="#" data-language-name="go">Go</a>
+              
+            
+          </div>
+        
+      </div>
+    </div>
+  </body>
+</html>
