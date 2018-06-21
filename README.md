@@ -26,5 +26,5 @@ aglio -i deling.api.md -s
 ### Publishing changes
 The master branch is published as a GitHub page. It is published when a new change to `index.html` is pushed to master. To update `index.html`, run:
 ```
- aglio --theme-variables flatly -i deling-api.md --theme-template triple  -o index.htm
+ aglio --theme-variables flatly -i deling-api.md --theme-template triple  -o index.html
 ```
