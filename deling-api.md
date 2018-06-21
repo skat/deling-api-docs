@@ -30,6 +30,11 @@ A car filing object has the following attributes:
 
 ### View a Car detail [GET]
 
++ Request (application/json)
+    + Headers
+
+            Authorization: Bearer QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+
 + Response 200 (application/json)
 
         [
@@ -49,6 +54,11 @@ A car filing object has the following attributes:
 
 ### Get a list of User's Car Filings [GET]
 
++ Request (application/json)
+    + Headers
+
+            Authorization: Bearer QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+
 + Response 200 (application/json)
 
         [
@@ -67,6 +77,11 @@ A car filing object has the following attributes:
 ## Car Collection [/car]
 
 ### List All Car Filings [GET]
+
++ Request (application/json)
+    + Headers
+
+            Authorization: Bearer QWxhZGRpbjpvcGVuIHNlc2FtZQ==
 
 + Response 200 (application/json)
 
@@ -96,14 +111,20 @@ You can add a car filing using this action. It takes a JSON object.
 
 + Request (application/json)
 
-        {
-            "transactionId": "fc60f6aa-189b-4c20-9741-f5292b630e97",
-            "amount": 100.50,
-            "startTime": "2018-02-21T12:19:38+01:00",
-            "endTime": "2018-02-21T12:19:38+01:00",
-            "paymentTime": "2018-02-21T12:19:38+01:00",
-            "registrationNumber": "BC66476"
-        }
+    + Headers
+
+            Authorization: Bearer QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+
+    + Body
+
+            {
+                "transactionId": "fc60f6aa-189b-4c20-9741-f5292b630e97",
+                "amount": 100.50,
+                "startTime": "2018-02-21T12:19:38+01:00",
+                "endTime": "2018-02-21T12:19:38+01:00",
+                "paymentTime": "2018-02-21T12:19:38+01:00",
+                "registrationNumber": "BC66476"
+            }
 
 + Response 201 (application/json)
 
