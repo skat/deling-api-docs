@@ -6,9 +6,9 @@ An API for the pilot sharing economy project DELING. The DELING API is organized
 
 # Authentication
 
-Authenticate your platform by including your secret key in API requests. To get a key, please contact us at `deleokonomi@skat.dk`. Do not share your secret API key in publicly accessible areas such as GitHub, client-side code and so forth.
+Authenticate your platform by including your secret key in API requests. To get a key, please contact us at `deleokonomi@skat.dk` or the SLACK channel. Do not share your secret API key in publicly accessible areas such as GitHub, client-side code and so forth.
 
-Authentication to the API is performed via a Bearer token, and must  be included in the `Authorization` header. Use  `-H "Authorization: Bearer you_access_token"`.
+Authentication to the API is performed via a Bearer token, and must  be included in the `Authorization` header. Use  `-H "Authorization: Bearer your_access_token"`.
 
 # Group Cars
 
