@@ -28,6 +28,9 @@ A car filing object has the following attributes:
 + userId (string) - A GUID representing the user
 + platformId (string) - A GUID representing the platform
 
++ Parameters
+    + id: `dc73524f-85eb-447b-952f-e8f66293335b` (required, string) - Unique ID of the Car in form of a GUID
+
 
 ### View a Car detail [GET]
 
@@ -41,6 +44,7 @@ A car filing object has the following attributes:
         [
             {
                 "registrationNumber": "BC66476",
+                "id": "dc73524f-85eb-447b-952f-e8f66293335b",
                 "userId": "8ba4304b-ee11-4475-86be-80c94be60458",
                 "platformId": "1",
                 "transactionId": "fc60f6aa-189b-4c20-9741-f5292b630e97",
@@ -51,7 +55,10 @@ A car filing object has the following attributes:
             }
         ]
 
-## User's car [/car/user/{id}]
+## User's car [/car/user/{user_id}]
+
++ Parameters
+    + user_id: `8ba4304b-ee11-4475-86be-80c94be60458` (required, string) - Unique ID of the User in form of a GUID
 
 ### Get a list of User's Car Filings [GET]
 
@@ -65,6 +72,7 @@ A car filing object has the following attributes:
         [
             {
                 "registrationNumber": "BC66476",
+                "id": "dc73524f-85eb-447b-952f-e8f66293335b",
                 "userId": "8ba4304b-ee11-4475-86be-80c94be60458",
                 "platformId": "1",
                 "transactionId": "fc60f6aa-189b-4c20-9741-f5292b630e97",
@@ -89,6 +97,7 @@ A car filing object has the following attributes:
         [
             {
                 "registrationNumber": "BC66476",
+                "id": "dc73524f-85eb-447b-952f-e8f66293335b",
                 "userId": "8ba4304b-ee11-4475-86be-80c94be60458",
                 "platformId": "1",
                 "transactionId": "fc60f6aa-189b-4c20-9741-f5292b630e97",
@@ -137,6 +146,7 @@ You can add a car filing using this action. It takes a JSON object.
 
             {
                 "registrationNumber": "BC66476",
+                "id": "4cc76590-89ce-46d6-998c-aae3fdb7c791",
                 "userId": "8ba4304b-ee11-4475-86be-80c94be60458",
                 "platformId": "1",
                 "transactionId": "fc60f6aa-189b-4c20-9741-f5292b630e97",
@@ -163,6 +173,9 @@ A car filing object has the following attributes:
 + userId (string) - A GUID representing the user
 + platformId (string) - A GUID representing the platform
 
++ Parameters
+    + id: `0d1da6da-1660-4e88-b79d-128e3a622e03` (required, string) - Unique ID of the Boat in form of a GUID
+
 
 ### View a Boat detail [GET]
 
@@ -175,6 +188,7 @@ A car filing object has the following attributes:
 
         [
             {
+                "id": "0d1da6da-1660-4e88-b79d-128e3a622e03",
                 "userId": "8ba4304b-ee11-4475-86be-80c94be60458",
                 "platformId": "1",
                 "transactionId": "fc60f6aa-189b-4c20-9741-f5292b630e97",
@@ -185,7 +199,10 @@ A car filing object has the following attributes:
             }
         ]
 
-## User's boat [/boat/user/{id}]
+## User's boat [/boat/user/{user_id}]
+
++ Parameters
+    + user_id: `8ba4304b-ee11-4475-86be-80c94be60458` (required, string) - Unique ID of the User in form of a GUID
 
 ### Get a list of User's Boat Filings [GET]
 
@@ -198,6 +215,7 @@ A car filing object has the following attributes:
 
         [
             {
+                "id": "0d1da6da-1660-4e88-b79d-128e3a622e03",
                 "userId": "8ba4304b-ee11-4475-86be-80c94be60458",
                 "platformId": "1",
                 "transactionId": "fc60f6aa-189b-4c20-9741-f5292b630e97",
@@ -221,6 +239,7 @@ A car filing object has the following attributes:
 
         [
             {
+                "id": "0d1da6da-1660-4e88-b79d-128e3a622e03",
                 "userId": "8ba4304b-ee11-4475-86be-80c94be60458",
                 "platformId": "1",
                 "transactionId": "fc60f6aa-189b-4c20-9741-f5292b630e97",
@@ -266,6 +285,7 @@ You can add a boat filing using this action. It takes a JSON object.
     + Body
 
             {
+                "id": "0d1da6da-1660-4e88-b79d-128e3a622e03",
                 "userId": "8ba4304b-ee11-4475-86be-80c94be60458",
                 "platformId": "1",
                 "transactionId": "fc60f6aa-189b-4c20-9741-f5292b630e97",
@@ -292,6 +312,9 @@ A service filing object has the following attributes:
 + platformId (string) - A GUID representing the platform
 + serviceType (string) - Type of service conducted
 
++ Parameters
+    + id: `0d1da6da-1660-4e88-b79d-128e3a622e03` (required, string) - Unique ID of the Service in form of a GUID
+
 ### View a Service detail [GET]
 
 + Request (application/json)
@@ -314,7 +337,10 @@ A service filing object has the following attributes:
             }
         ]
 
-## User's service [/service/user/{id}]
+## User's service [/service/user/{user_id}]
+
++ Parameters
+    + user_id: `8ba4304b-ee11-4475-86be-80c94be60458` (required, string) - Unique ID of the User in form of a GUID
 
 ### Get a list of User's Service Filings [GET]
 
@@ -327,6 +353,7 @@ A service filing object has the following attributes:
 
         [
             {
+                "id": "0d1da6da-1660-4e88-b79d-128e3a622e03",
                 "userId": "8ba4304b-ee11-4475-86be-80c94be60458",
                 "platformId": "1",
                 "transactionId": "fc60f6aa-189b-4c20-9741-f5292b630e97",
@@ -351,6 +378,7 @@ A service filing object has the following attributes:
 
         [
             {
+                "id": "0d1da6da-1660-4e88-b79d-128e3a622e03",
                 "userId": "8ba4304b-ee11-4475-86be-80c94be60458",
                 "platformId": "1",
                 "transactionId": "fc60f6aa-189b-4c20-9741-f5292b630e97",
@@ -399,6 +427,7 @@ You can add a service filing using this action. It takes a JSON object.
     + Body
 
             {
+                "id": "0d1da6da-1660-4e88-b79d-128e3a622e03",
                 "userId": "8ba4304b-ee11-4475-86be-80c94be60458",
                 "platformId": "1",
                 "transactionId": "fc60f6aa-189b-4c20-9741-f5292b630e97",
