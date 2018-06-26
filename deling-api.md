@@ -3,6 +3,8 @@ HOST: http://localhost/api
 
 # DELING
 
+DELING is a pilot project between SKAT and sharing economy platforms, where platforms send in relevant data to SKAT about their users. For the pilot project, these data are anonymous. We want to co-create to meet the needs of the platforms, and one objective is to map and clarify if platforms want to integrate using a REST API. We have therefore built a REST API which is documented below. We welcome you to leave feedback and comments at the [repo](https://github.com/skat/deling-api-docs) as issues or the SLACK channel you have been invited to.
+
 An API for the pilot sharing economy project DELING. The DELING API is organized around [REST](https://en.wikipedia.org/wiki/Representational_state_transfer). Our API has resource-oriented URLs and uses HTTP response codes to indicate API errors. The resources are different domains such as Car, Boat, Housing and Services (cleaning, baby-sitting etc). We support [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), allowing you to interact securely with our API from a client-side web application. You should never expose your secret API key in any public website's client-side code. [JSON](https://www.json.org/) is returned by all API responses, including errors.
 
 # Authentication
@@ -10,6 +12,8 @@ An API for the pilot sharing economy project DELING. The DELING API is organized
 Authenticate your platform by including your secret key in API requests. To get a key, please contact us at the SLACK channel. Do not share your secret API key in publicly accessible areas such as GitHub, client-side code and so forth.
 
 Authentication to the API is performed via a Bearer token, and must  be included in the `Authorization` header. Use  `-H "Authorization: Bearer your_access_token"`.
+
+The final solution (out of scope for the pilot project) will use [OAUTH2](https://oauth.net/2/) for identifying end-user and granting platforms to send data on their behalf.
 
 # Updating an existing filing
 
