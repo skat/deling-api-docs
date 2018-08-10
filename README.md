@@ -8,6 +8,9 @@ For calling the API, replace `localhost` in the API documentation with: `PUT_THE
 
 The framework is provided by [aglio](https://github.com/danielgtaylor/aglio), and converts the [`deling-api.md`](deling-api.md) to html.
 
+## Postman collections
+Postman collections are also provided for Car, Boat and Service API. To import the collections, use a version of [Postman](https://www.getpostman.com/) that supports Collection v2.1
+
 ## Updating content
 
 Update the documentation file [`deling-api.md`](deling-api.md), and open a pull request to suggest changes.
