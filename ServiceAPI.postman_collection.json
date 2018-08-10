@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"_postman_id": "40c82978-fe44-4978-8cb9-dfc23783cdad",
+			"_postman_id": "3d0d68dd-027f-4cba-947a-88d6f03606ab",
 			"name": "Add Service filing",
 			"request": {
 				"method": "POST",
@@ -22,12 +22,12 @@
 					"raw": "{\n    \"amount\": \"110\",\n    \"startTime\": \"2018-02-21T11:19:38+00:00\",\n    \"endTime\": \"2018-02-25T11:19:38+00:00\",\n    \"transactionId\": \"3108419c-3037-47ad-81ac-33968157c8f9\",\n    \"paymentTime\": \"2018-02-21T11:19:38+00:00\",\n    \"serviceType\": \"Cleaning\"\n}"
 				},
 				"url": {
-					"raw": "{{api_endpoint}}/car",
+					"raw": "{{api_endpoint}}/service",
 					"host": [
 						"{{api_endpoint}}"
 					],
 					"path": [
-						"car"
+						"service"
 					]
 				},
 				"description": "Make a POST request to add a new Boat filing for an anonymous user"
@@ -35,19 +35,19 @@
 			"response": []
 		},
 		{
-			"_postman_id": "f19ebf43-c905-4a9a-9120-58e5249c531f",
+			"_postman_id": "6cc682e8-d13c-4e2f-bd98-b6cccfe68b22",
 			"name": "List of User's Service filings",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "{{api_endpoint}}/car/user/{{user_id}}",
+					"raw": "{{api_endpoint}}/service/user/{{user_id}}",
 					"host": [
 						"{{api_endpoint}}"
 					],
 					"path": [
-						"car",
+						"service",
 						"user",
 						"{{user_id}}"
 					]
@@ -57,19 +57,19 @@
 			"response": []
 		},
 		{
-			"_postman_id": "cf31aa8a-7d27-485a-89d5-c8a354cd652d",
+			"_postman_id": "6707133e-963d-4514-85eb-51ab788ed1cc",
 			"name": "View a Service detail",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "{{api_endpoint}}/car/{{id}}",
+					"raw": "{{api_endpoint}}/service/{{id}}",
 					"host": [
 						"{{api_endpoint}}"
 					],
 					"path": [
-						"car",
+						"service",
 						"{{id}}"
 					]
 				},
@@ -112,25 +112,25 @@
 	],
 	"variable": [
 		{
-			"id": "07343292-044c-4688-a8ce-31cbcf455db5",
+			"id": "4f5050f4-816c-4ea8-8055-8f7e2ffceed2",
 			"key": "access_token",
 			"value": "your-access-token",
 			"type": "string"
 		},
 		{
-			"id": "5c444e6b-9a31-4e73-b581-7252930a7bb6",
+			"id": "1b949937-0ff6-445d-8a3f-7dff4ae8a260",
 			"key": "api_endpoint",
 			"value": "http://localhost:5000/api",
 			"type": "string"
 		},
 		{
-			"id": "2c6ccd97-098c-40cd-ab0d-6fd9809af466",
+			"id": "1eb2c13a-7ba7-437c-9ec9-6e155e7e791e",
 			"key": "user_id",
 			"value": "",
 			"type": "string"
 		},
 		{
-			"id": "fc4b33a9-25fa-49c8-ac4b-6ce773995ea6",
+			"id": "73fae543-2324-422d-ada3-76cd66f5ea6c",
 			"key": "id",
 			"value": "",
 			"type": "string"
