@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "f5368a30-3cfe-4f8d-8a33-86614a60a934",
+		"name": "CarAPI",
+		"description": "Examples of GET and POST for Car filings API. Different parameters are defined under `Variables`.\n\nSome of the GET methods requires an `user_id` or `id`. These values can be found in the response body after adding a new filing. ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "52c36c48-353d-4aee-801d-456183ffa543",
+			"name": "Add Car filing",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": \"110\",\n    \"startTime\": \"2018-02-21T11:19:38+00:00\",\n    \"endTime\": \"2018-02-25T11:19:38+00:00\",\n    \"transactionId\": \"3108419c-3037-47ad-81ac-33968157c8f9\",\n    \"paymentTime\": \"2018-02-21T11:19:38+00:00\",\n    \"registrationNumber\": \"DD12312\"\n}"
+				},
+				"url": {
+					"raw": "{{api_endpoint}}/car",
+					"host": [
+						"{{api_endpoint}}"
+					],
+					"path": [
+						"car"
+					]
+				},
+				"description": "Make a POST request to add a new Boat filing for an anonymous user"
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "f3c861a3-eada-4ca0-b8a1-0cd9f4377c84",
+			"name": "List of User's Car filings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{api_endpoint}}/car/user/{{user_id}}",
+					"host": [
+						"{{api_endpoint}}"
+					],
+					"path": [
+						"car",
+						"user",
+						"{{user_id}}"
+					]
+				},
+				"description": "Returns a list of all boat filings registered on a mock user"
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "d3f86571-8aa4-449a-aa8b-8eeac1f60ee0",
+			"name": "View a Car detail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{api_endpoint}}/car/{{id}}",
+					"host": [
+						"{{api_endpoint}}"
+					],
+					"path": [
+						"car",
+						"{{id}}"
+					]
+				},
+				"description": "Get the details of a boat filing using the id"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b71e90a9-d852-434c-bcbf-7e6a0170939a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "15ddaed3-7cdf-4a07-8fc9-11d4a023a026",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "5297ab75-0682-4a90-8469-568d866f73e1",
+			"key": "access_token",
+			"value": "your-access-token",
+			"type": "string"
+		},
+		{
+			"id": "e0fbf1ac-5ca2-4c94-8788-2a47de653629",
+			"key": "api_endpoint",
+			"value": "http://localhost:5000/api",
+			"type": "string"
+		},
+		{
+			"id": "fbe0c68a-2e6c-46ce-a03c-4b76a64f6974",
+			"key": "user_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "1434bbd0-2fee-4ec1-ade3-0516723292d2",
+			"key": "id",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
