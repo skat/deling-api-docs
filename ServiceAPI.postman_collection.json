@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "25734179-f4b6-432c-996a-0c56f33de112",
+		"name": "ServiceAPI",
+		"description": "Examples of GET and POST for Service filings API. Different parameters are defined under `Variables`.\n\nSome of the GET methods requires an `user_id` or `id`. These values can be found in the response body after adding a new filing. ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "3d0d68dd-027f-4cba-947a-88d6f03606ab",
+			"name": "Add Service filing",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"amount\": \"110\",\n    \"startTime\": \"2018-02-21T11:19:38+00:00\",\n    \"endTime\": \"2018-02-25T11:19:38+00:00\",\n    \"transactionId\": \"3108419c-3037-47ad-81ac-33968157c8f9\",\n    \"paymentTime\": \"2018-02-21T11:19:38+00:00\",\n    \"serviceType\": \"Cleaning\"\n}"
+				},
+				"url": {
+					"raw": "{{api_endpoint}}/service",
+					"host": [
+						"{{api_endpoint}}"
+					],
+					"path": [
+						"service"
+					]
+				},
+				"description": "Make a POST request to add a new Boat filing for an anonymous user"
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "6cc682e8-d13c-4e2f-bd98-b6cccfe68b22",
+			"name": "List of User's Service filings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{api_endpoint}}/service/user/{{user_id}}",
+					"host": [
+						"{{api_endpoint}}"
+					],
+					"path": [
+						"service",
+						"user",
+						"{{user_id}}"
+					]
+				},
+				"description": "Returns a list of all boat filings registered on a mock user"
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "6707133e-963d-4514-85eb-51ab788ed1cc",
+			"name": "View a Service detail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{api_endpoint}}/service/{{id}}",
+					"host": [
+						"{{api_endpoint}}"
+					],
+					"path": [
+						"service",
+						"{{id}}"
+					]
+				},
+				"description": "Get the details of a boat filing using the id"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "b71e90a9-d852-434c-bcbf-7e6a0170939a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "15ddaed3-7cdf-4a07-8fc9-11d4a023a026",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "4f5050f4-816c-4ea8-8055-8f7e2ffceed2",
+			"key": "access_token",
+			"value": "your-access-token",
+			"type": "string"
+		},
+		{
+			"id": "1b949937-0ff6-445d-8a3f-7dff4ae8a260",
+			"key": "api_endpoint",
+			"value": "http://localhost:5000/api",
+			"type": "string"
+		},
+		{
+			"id": "1eb2c13a-7ba7-437c-9ec9-6e155e7e791e",
+			"key": "user_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"id": "73fae543-2324-422d-ada3-76cd66f5ea6c",
+			"key": "id",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
