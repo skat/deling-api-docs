@@ -4,7 +4,7 @@ This is a site for providing documentation for the pilot project DELING API. It 
 
 The documentation is written with [API Blueprint](https://apiblueprint.org/) for the DELING project. If you have comments, change requests or similar, please add it as an issue and we will have a look at it.
 
-For calling the API, replace `localhost` in the API documentation with: `PUT_THE_FINAL_URL_HERE`.
+For calling the API, replace `localhost` in the API documentation with the endpoint you have received from us.
 
 The framework is provided by [aglio](https://github.com/danielgtaylor/aglio), and converts the [`deling-api.md`](deling-api.md) to html.
 
