@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: http://localhost/api
+HOST: https://api.example.com
 
 # DELING
 
@@ -29,6 +29,11 @@ Otherwise please follow these guidelines:
 # Updating an existing filing
 
 If there are changes to a filing, use `POST` to send updates. For instance a Car filing with transactionId `abc123` is reported with  an amount of 100 DKK. If the amount is wrong and a correction is needed, you should send a new `POST` request with the new amount: 50 DKK, and use the same value for the transactionId as before: `abc123`.
+
+# Errors
+We use standard HTTP status codes to show wether an API request succeeded or not. In general: Codes in the `2xx` range indicate success. Codes in the `4xx` range indicate an error that failed given the information provided (e.g., a required parameter was omitted, an authorization failed, etc.). Codes in the `5xx` range indicate an error with our servers.
+
+Some `4xx` errors (e.g., invalid parameter) include an error message that briefly explains the error.
 
 # Group Cars
 
