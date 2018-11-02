@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: http://localhost/api
+HOST: https://api.example.com
 
 # DELING
 
@@ -15,9 +15,25 @@ Authentication to the API is performed via a Bearer token, and must  be included
 
 The final solution (out of scope for the pilot project) will use [OAUTH2](https://oauth.net/2/) for identifying end-user and granting platforms to send data on their behalf.
 
+# Implementation
+It's up to you how you want to implement the API with your system. One way we envision it, is to call the API endpoint for creating a Filing, every time a transaction is completed on your platform.
+
+Otherwise please follow these guidelines:
+- Anonymize the data you send in
+- Use the SANDBOX API endpoint you have received from us
+- Do not share your secret API key in publicly accessible areas such as GitHub, client-side code and so forth
+
+ If you want to deploy the implementation to your production environment, you are welcome to do so. Please follow the guidelines above if you do. We are mostly interested in how feasible it is for you to make an integration.
+
+
 # Updating an existing filing
 
 If there are changes to a filing, use `POST` to send updates. For instance a Car filing with transactionId `abc123` is reported with  an amount of 100 DKK. If the amount is wrong and a correction is needed, you should send a new `POST` request with the new amount: 50 DKK, and use the same value for the transactionId as before: `abc123`.
+
+# Errors
+We use standard HTTP status codes to show wether an API request succeeded or not. In general: Codes in the `2xx` range indicate success. Codes in the `4xx` range indicate an error that failed given the information provided (e.g., a required parameter was omitted, an authorization failed, etc.). Codes in the `5xx` range indicate an error with our servers.
+
+Some `4xx` errors (e.g., invalid parameter) include an error message that briefly explains the error.
 
 # Group Cars
 
@@ -31,7 +47,7 @@ A car filing object has the following attributes:
 + amount (decimal) - The income amount for the rental/service in DKK
 + startTime (string) - An ISO8601 date when the rental time started
 + endTime (string) -  An ISO8601 date when the rental time ended
-+ paymentTime (string) - An ISO8601 date when the payment occurred
++ paymentTime (string) - An ISO8601 date when the payment occurred (car owner is paid)
 + registrationNumber (string) - The registration number of the car
 + userId (string) - A GUID representing the user
 + platformId (string) - A GUID representing the platform
@@ -124,7 +140,7 @@ You can add a car filing using this action. It takes a JSON object.
 + amount (decimal) - The income amount for the rental/service in DKK
 + startTime (string) - An ISO8601 date when the rental time started
 + endTime (string) -  An ISO8601 date when the rental time ended
-+ paymentTime (string) - An ISO8601 date when the payment occurred
++ paymentTime (string) - An ISO8601 date when the payment occurred (car owner got paid)
 + registrationNumber (string) - The registration number of the car
 
 + Request (application/json)
@@ -177,7 +193,7 @@ A car filing object has the following attributes:
 + amount (decimal) - The income amount for the rental/service in DKK
 + startTime (string) - An ISO8601 date when the rental time started
 + endTime (string) -  An ISO8601 date when the rental time ended
-+ paymentTime (string) - An ISO8601 date when the payment occurred
++ paymentTime (string) - An ISO8601 date when the payment occurred (the boat owner is paid)
 + userId (string) - A GUID representing the user
 + platformId (string) - A GUID representing the platform
 
@@ -266,7 +282,7 @@ You can add a boat filing using this action. It takes a JSON object.
 + amount (decimal) - The income amount for the rental/service in DKK
 + startTime (string) - An ISO8601 date when the rental time started
 + endTime (string) -  An ISO8601 date when the rental time ended
-+ paymentTime (string) - An ISO8601 date when the payment occurred
++ paymentTime (string) - An ISO8601 date when the payment occurred (the boat owner is paid)
 
 + Request (application/json)
 
@@ -315,7 +331,7 @@ A service filing object has the following attributes:
 + amount (decimal) - The income amount for the rental/service in DKK
 + startTime (string) - An ISO8601 date when the rental time started
 + endTime (string) -  An ISO8601 date when the rental time ended
-+ paymentTime (string) - An ISO8601 date when the payment occurred
++ paymentTime (string) - An ISO8601 date when the payment occurred (the service provider is paid)
 + userId (string) - A GUID representing the user
 + platformId (string) - A GUID representing the platform
 + serviceType (string) - Type of service conducted
@@ -406,7 +422,7 @@ You can add a service filing using this action. It takes a JSON object.
 + amount (decimal) - The income amount for the rental/service in DKK
 + startTime (string) - An ISO8601 date when the rental time started
 + endTime (string) -  An ISO8601 date when the rental time ended
-+ paymentTime (string) - An ISO8601 date when the payment occurred
++ paymentTime (string) - An ISO8601 date when the payment occurred (the service provider is paid)
 + serviceType (string) - Type of service conducted
 
 + Request (application/json)
